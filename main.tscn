@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://df8xu6s5ux5xl"]
+
+[ext_resource type="Script" path="res://Player.cs" id="1_2yd40"]
+[ext_resource type="Texture2D" uid="uid://yq0yudn2k564" path="res://ninja_first_finish_with_katana.png" id="2_fckw3"]
+[ext_resource type="Texture2D" uid="uid://b2vlhi7cib1pv" path="res://ninja_walking_one.png" id="3_ubf7l"]
+[ext_resource type="PackedScene" uid="uid://bicakgl65ly12" path="res://platform.tscn" id="3_yts7d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dn5vd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fckw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ubf7l")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdris"]
+size = Vector2(68, 183)
+
+[node name="Main" type="StaticBody2D"]
+position = Vector2(-809, -420)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(956, 531)
+script = ExtResource("1_2yd40")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(438.5, 384)
+scale = Vector2(0.318898, 0.808333)
+sprite_frames = SubResource("SpriteFrames_dn5vd")
+animation = &"walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(442, 382.5)
+shape = SubResource("RectangleShape2D_xdris")
+
+[node name="Platform" parent="." instance=ExtResource("3_yts7d")]
+position = Vector2(806, 498)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, 14)
+build_mode = 1
+polygon = PackedVector2Array(803, 422, 812, 1143, 1960, 1144, 1957, 429)

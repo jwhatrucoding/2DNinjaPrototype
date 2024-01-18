@@ -13,44 +13,48 @@ public partial class Player : CharacterBody2D
 	{
 		var velocity = Velocity;		
 		velocity.X = 0;
-
+		
+		// Get input
 		var right = Input.IsActionPressed("move_right");
 		var left = Input.IsActionPressed("move_left");
-		var jump = Input.IsActionPressed("move_jump");
+		// For jump IsActionJustPressed is better and more precise than IsActionPressed
+		var jump = Input.IsActionJustPressed("move_jump");
 		
-		//TODO -> Implement double jump
+		// JUMP
 		if (jump && _jump_counter < _extra_jumps){
 			velocity.Y = _jumpSpeed;
 			_jump_counter += 1;
 			GD.Print(_jump_counter + " " + _extra_jumps);
 		}
-		
+		// RIGHT
 		if (right){
 			velocity.X += _runSpeed;
 		}
-		
+		// LEFT
 		if (left){
 			velocity.X -= _runSpeed;
 		}
-		
+		// When on floor reset jump counter
 		if (IsOnFloor()){
 			_jump_counter = 0;
 		}
 		
 		Velocity = velocity;
-		
+		// Get AnimatedSprites
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("Sprite2D");
-
+		
+		// If moving, play animation 
 		if (velocity.Length() > 0)
 		{
 			velocity = velocity.Normalized() * _runSpeed;
 			animatedSprite2D.Play();
 		}
+		// else stop
 		else
 		{
 			animatedSprite2D.Stop();
 		}
-		
+		// If walking play animation walking and flip player
 		if (velocity.X != 0)
 		{
 			animatedSprite2D.Animation = "walking";

@@ -41,7 +41,7 @@ position = Vector2(442, 382.5)
 shape = SubResource("RectangleShape2D_xdris")
 
 [node name="Platform" parent="." instance=ExtResource("3_yts7d")]
-position = Vector2(806, 498)
+position = Vector2(811, 418)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3, 14)

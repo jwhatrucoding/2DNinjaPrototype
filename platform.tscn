@@ -1,19 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bicakgl65ly12"]
 
-[ext_resource type="Texture2D" uid="uid://byc2yrnmym8f0" path="res://ground.png" id="1_ifax6"]
+[ext_resource type="Texture2D" uid="uid://ww2itqo6nb4m" path="res://first_floor.png" id="1_mvyw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66d2d"]
-size = Vector2(3501.59, 490.231)
+size = Vector2(254.221, 40.8929)
 
 [node name="Platform" type="Node2D"]
 
 [node name="ground" type="Sprite2D" parent="."]
-position = Vector2(628, 299)
-scale = Vector2(0.355758, 0.279032)
-texture = ExtResource("1_ifax6")
+position = Vector2(576.5, 456.258)
+scale = Vector2(4.52362, 1.58952)
+texture = ExtResource("1_mvyw1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ground"]
+position = Vector2(33.7308, 272.37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
-position = Vector2(-5.2301, 992.717)
+position = Vector2(-34.0622, -171.558)
 shape = SubResource("RectangleShape2D_66d2d")

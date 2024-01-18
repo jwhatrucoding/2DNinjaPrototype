@@ -18,16 +18,6 @@ public partial class Player : CharacterBody2D
 		var left = Input.IsActionPressed("move_left");
 		var jump = Input.IsActionPressed("move_jump");
 		
-		/*if (jump && _jump_counter < _extra_jumps){
-			velocity.Y += _jumpSpeed;
-			_jump_counter += 1;
-			GD.Print(_jump_counter);
-		}*/
-		
-		/*if (jump && _jump_counter == 1){
-			velocity.Y += _jumpSpeed - 250;
-			_jump_counter = 0;
-		}*/
 		//TODO -> Implement double jump
 		if (jump && _jump_counter < _extra_jumps){
 			velocity.Y = _jumpSpeed;
@@ -38,13 +28,13 @@ public partial class Player : CharacterBody2D
 		if (right){
 			velocity.X += _runSpeed;
 		}
-			
+		
 		if (left){
 			velocity.X -= _runSpeed;
 		}
+		
 		if (IsOnFloor()){
 			_jump_counter = 0;
-			GD.Print(_jump_counter + " " + _extra_jumps);
 		}
 		
 		Velocity = velocity;
@@ -72,7 +62,6 @@ public partial class Player : CharacterBody2D
 		velocity = Velocity;
 		velocity.Y += _gravity * (float)delta;
 		Velocity = velocity;
-		//GetInput();
 		MoveAndSlide();	
 	}
 }
